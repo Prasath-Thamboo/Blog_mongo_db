@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Header include-->
+<%- include('layouts/header')-%>
+
+    <body>
+        <!-- Navigation-->
+        <!-- Navigation include-->
+        <%- include('layouts/navbar')-%>
+            <!-- Page Header-->
+            <header class="masthead" style="background-image: url('/assets/img/contact-bg.jpg')">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>Blog LIST</h1>
+                                <span class="subheading">Freyja blog LIST </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content-->
+            <main class="mb-4">
+                <div class="container px-4 px-lg-5">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                            <% for(var i=0; i<blogposts.length; i++) { %>
+                                <div class="post-preview">
+                                    <a href="/post/<%= blogposts[i]._id%>">
+                                        <h2 class="post-title">
+                                            <%= blogposts[i].title%>
+                                        </h2>
+                                        <h3 class="post-subtitle">
+                                            <%= blogposts[i].description%>
+                                        </h3>
+                                    </a>
+                                    <% if (blogposts[i].userid){ %>
+                                        <p class="post-meta">Posted By
+                                            <a href="#">
+                                                <%= blogposts[i].userid.username %>
+                                            </a> on <%= blogposts[i].datePosted.toDateString() %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                                <%}%>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Footer include-->
+            <%- include('layouts/footer')-%>
+                <!-- Bootstrap core JS-->
+                <%- include('layouts/scripts')-%>
+    </body>
+
+</html>
